@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Object Prototypes | COMP1073 Client-Side JavaScript</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="css/normalize.css" rel="stylesheet" />
+	<link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+	
+	<header>
+
+	</header>
+	<section>
+
+	</section>
+	<script>
+		
+		const header = document.querySelector('header');
+		const section = document.querySelector('section');
+		
+	
+		const requestURL = 'https://andreifridrikhsen1.github.io/lab10-js/data/i-scream.json';
+
+		
+		const request = new XMLHttpRequest();
+
+		
+		request.open('GET', requestURL);
+
+		request.responseType = 'json';
+		request.send();
+
+
+		request.addEventListener('load',function() {
+			const iScreamInc = request.response;
+			console.log(iScreamInc);
+			populateHeader(iScreamInc);
+			topFlavors(iScreamInc);
+			}
+		);
+		
+		function populateHeader(jsonObj){
+		
+			const headerH1 = document.createElement('h1');
+			headerH1.textContent = jsonObj['companyName'];
+			header.appendChild(headerH1);
+			
+			const headerPara = document.createElement('p');
+			headerPara.textContent = 'Head Office: ' + jsonObj['headOffice'] + ', Established: ' + jsonObj['established'];
+			header.appendChild(headerPara);
+		}
+
+		
+		function topFlavors(jsonObj){
+			
+			const topFlavors = jsonObj['topFlavors'];
+
+			for (let i = 0; i < topFlavors.length; i++) {
+				
+				const article = document.createElement('article');
+				const h2 = document.createElement('h2');
+				const img = document.createElement('img');
+				const p1 = document.createElement('p');
+				const p2 = document.createElement('p');
+				const list = document.createElement('ul');
+
+				
+				img.setAttribute('src', 'https://andreifridrikhsen1.github.io/lab10-js/images/' + topFlavors[i].image);
+				img.setAttribute('alt', topFlavors[i].name);
+				h2.textContent = topFlavors[i].name;
+				p1.textContent = 'Calories: ' + topFlavors[i].calories;
+				p2.textContent = 'Type: ' + topFlavors[i].type;
+
+				const ingredients = topFlavors[i].ingredients;
+				for (let j = 0; j < ingredients.length; j++) {
+					const listItem = document.createElement('li');
+				
+					listItem.textContent = ingredients[j];
+					list.appendChild(listItem);
+				}
+
+			
+				article.appendChild(img);
+				article.appendChild(h2);
+				article.appendChild(p1);
+				article.appendChild(p2);
+				article.appendChild(list);
+
+				
+				section.appendChild(article);
+				}
+			}
+		
+		</script>
+	</body>
+</html>
