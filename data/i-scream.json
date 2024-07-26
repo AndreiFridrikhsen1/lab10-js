@@ -36,6 +36,28 @@
         "candy sprinkles"
       ],
       "image": "strawberry-sprinkle.svg"
+    },
+    {
+      "name": "extra ice cream 1",
+      "calories": 375,
+      "type": "gelato",
+      "ingredients": [
+        "heavy cream",
+        "milk",
+        "egg yolk"
+      ],
+      "image": "ice-creame-xtra1.svg"
+    },
+    {
+      "name": "extra ice cream 2",
+      "calories": 450,
+      "type": "Mochi",
+      "ingredients": [
+        "conrstrach",
+        "short grain rice",
+        "sugar"
+      ],
+      "image": "ice-creame-xtra2.svg"
     }
     
   ]
